@@ -1,40 +1,59 @@
-document.getElementById("generate").addEventListener("click", function() {
-  const length = document.getElementById("length").value;
-  const useSymbols = document.getElementById("symbols").checked;
-  const useNumbers = document.getElementById("numbers").checked;
-  const useUppercase = document.getElementById("uppercase").checked;
-  const useLowercase = document.getElementById("lowercase").checked;
+document.getElementById("generate").addEventListener("click", function () {
+      const length = parseInt(document.getElementById("length").value);
+      const useSymbols = document.getElementById("symbols").checked;
+      const useNumbers = document.getElementById("numbers").checked;
+      const useUppercase = document.getElementById("uppercase").checked;
+      const useLowercase = document.getElementById("lowercase").checked;
 
-  const password = generatePassword(length, useSymbols, useNumbers, useUppercase, useLowercase);
-  document.getElementById("password").value = password;
-});
+      const password = generatePassword(length, useSymbols, useNumbers, useUppercase, useLowercase);
+      document.getElementById("password").value = password;
+    });
 
-document.getElementById("copy").addEventListener("click", function() {
-  const passwordField = document.getElementById("password");
-  passwordField.select();
-  document.execCommand("copy");
-});
+    document.getElementById("copy").addEventListener("click", function () {
+      const password = document.getElementById("password").value;
+      navigator.clipboard.writeText(password)
+        .then(() => alert("Senha copiada!"))
+        .catch(() => alert("Erro ao copiar senha."));
+    });
 
-function generatePassword(length, useSymbols, useNumbers, useUppercase, useLowercase) {
-  const symbols = "!@#$%^&*()-_=+[]{}|;:,.<>?";
-  const numbers = "0123456789";
-  const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const lowercase = "abcdefghijklmnopqrstuvwxyz";
+    function generatePassword(length, useSymbols, useNumbers, useUppercase, useLowercase) {
+      const symbols = "!@#$%^&*()-_=+[]{}|;:,.<>?";
+      const numbers = "0123456789";
+      const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const lowercase = "abcdefghijklmnopqrstuvwxyz";
 
-  let characters = "";
+      let available = "";
+      const mandatory = [];
 
-  if (useSymbols) characters += symbols;
-  if (useNumbers) characters += numbers;
-  if (useUppercase) characters += uppercase;
-  if (useLowercase) characters += lowercase;
+      if (useSymbols) {
+        available += symbols;
+        mandatory.push(symbols[Math.floor(Math.random() * symbols.length)]);
+      }
+      if (useNumbers) {
+        available += numbers;
+        mandatory.push(numbers[Math.floor(Math.random() * numbers.length)]);
+      }
+      if (useUppercase) {
+        available += uppercase;
+        mandatory.push(uppercase[Math.floor(Math.random() * uppercase.length)]);
+      }
+      if (useLowercase) {
+        available += lowercase;
+        mandatory.push(lowercase[Math.floor(Math.random() * lowercase.length)]);
+      }
 
-  if (characters.length === 0) characters = lowercase + uppercase + numbers + symbols;  // Default fallback
+      if (!available) {
+        available = symbols + numbers + uppercase + lowercase;
+      }
 
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    password += characters[randomIndex];
-  }
+      let password = mandatory.join("");
+      for (let i = password.length; i < length; i++) {
+        password += available[Math.floor(Math.random() * available.length)];
+      }
 
-  return password;
-}
+      return shuffle(password);
+    }
+
+    function shuffle(str) {
+      return str.split('').sort(() => Math.random() - 0.5).join('');
+    }
