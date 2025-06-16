@@ -1,0 +1,37 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirosh: Anshō Bangō</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Kirosh: Anshō Bangō</h1>
+    <div class="options">
+      <label for="length">Tamanho da Senha:</label>
+      <input type="number" id="length" min="8" max="32" value="16">
+      
+      <label for="symbols">Incluir Símbolos</label>
+      <input type="checkbox" id="symbols">
+      
+      <label for="numbers">Incluir Números</label>
+      <input type="checkbox" id="numbers">
+      
+      <label for="uppercase">Incluir Maiúsculas</label>
+      <input type="checkbox" id="uppercase">
+      
+      <label for="lowercase">Incluir Minúsculas</label>
+      <input type="checkbox" id="lowercase">
+    </div>
+    
+    <div class="result">
+      <input type="text" id="password" readonly>
+      <button id="generate">Gerar Senha</button>
+      <button id="copy">Copiar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
