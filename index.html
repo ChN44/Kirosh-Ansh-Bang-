@@ -7,27 +7,40 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
-
+<script src="script.js" defer></script>
 </head>
 <body>
+   <nav class="navbar">
+  <a href="https://github.com/ChN44" target="_blank">
+    <img src="imagens/tipografia white and red.png" alt="Logo" class="logo">
+  </a>
+</nav>
+
   <div class="container">
     <h1>Kirosh: Anshō Bangō</h1>
+    <input type="text" id="password-name" placeholder="Apelido da senha (ex: Netflix)" maxlength="30">
     <div class="options">
       <label for="length">Tamanho da Senha:</label>
       <input type="number" id="length" min="8" max="32" value="16">
       
-      <label for="symbols">Incluir Símbolos</label>
-      <input type="checkbox" id="symbols">
-      
-      <label for="numbers">Incluir Números</label>
-      <input type="checkbox" id="numbers">
-      
-      <label for="uppercase">Incluir Maiúsculas</label>
-      <input type="checkbox" id="uppercase">
-      
-      <label for="lowercase">Incluir Minúsculas</label>
-      <input type="checkbox" id="lowercase">
-    </div>
+<div class="options">
+  <div class="option">
+    <input type="checkbox" id="symbols">
+    <label for="symbols">Incluir Símbolos</label>
+  </div>
+  <div class="option">
+    <input type="checkbox" id="numbers">
+    <label for="numbers">Incluir Números</label>
+  </div>
+  <div class="option">
+    <input type="checkbox" id="uppercase">
+    <label for="uppercase">Incluir Maiúsculas</label>
+  </div>
+  <div class="option">
+    <input type="checkbox" id="lowercase">
+    <label for="lowercase">Incluir Minúsculas</label>
+  </div>
+</div>
     
     <div class="result">
       <input type="text" id="password" readonly>
@@ -35,7 +48,7 @@
       <button id="copy">Copiar</button>
     </div>
   </div>
-
-  <script src="script.js"></script>
+  <footer>
+    <p>Anshō Bangō desenvolvida por <a href=https://github.com/ChN44 target="_blank">ChN44</a></p>
 </body>
 </html>

@@ -57,3 +57,17 @@ document.getElementById("generate").addEventListener("click", function () {
     function shuffle(str) {
       return str.split('').sort(() => Math.random() - 0.5).join('');
     }
+
+    document.getElementById("copy").addEventListener("click", function () {
+  const apelido = document.getElementById("password-name").value.trim();
+  const senha = document.getElementById("password").value;
+  let texto = senha;
+  if (apelido) {
+    texto = `${apelido}: ${senha}`;
+  }
+  navigator.clipboard.writeText(texto)
+    .then(() => {
+      this.textContent = "Copiado!";
+      setTimeout(() => this.textContent = "Copiar", 1200);
+    });
+});
