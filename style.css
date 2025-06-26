@@ -1,5 +1,7 @@
+/* =========================
+   ESTILO GERAL E BODY
+   ========================= */
 body {
-  
   padding-top: 60px;
   font-family: WDXL Lubrifont SC, sans-serif;
   background-color: #121212;
@@ -10,10 +12,14 @@ body {
   height: 100vh;
   margin: 0;
 }
+
+/* =========================
+   NAVBAR E LOGO
+   ========================= */
 .navbar {
   width: 100%;
-   background: #222;
-  padding: 14px 0;
+  background: #222;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,12 +29,14 @@ body {
   z-index: 1000;
   box-shadow: 0 2px 16px rgba(0,0,0,0.4);
   transition: background 0.4s;
+  height: 90px; 
 }
 
 .logo {
-  height: 70px;
-  filter: drop-shadow(0 2px 8px hwb(355 0% 40%));
-  transition: transform 0.2s, filter 0.2s;
+  height: 100px; 
+  max-height: 80px;
+  width: auto;
+  display: block;
 }
 
 .logo:hover {
@@ -36,7 +44,9 @@ body {
   filter: drop-shadow(0 4px 16px #ff0033cc) brightness(1.1);
 }
 
-
+/* =========================
+   CAMPOS DE ENTRADA
+   ========================= */
 #password-name {
   width: 100%;
   padding: 12px;
@@ -62,8 +72,10 @@ body.light #password-name {
   border: 2px solid hwb(355 0% 60%);
 }
 
-
-.container {
+/* =========================
+   CONTAINER PRINCIPAL
+   ========================= */
+.container { 
   text-align: center;
   background-color: #1e1e1e;
   padding: 20px;
@@ -72,15 +84,56 @@ body.light #password-name {
   width: 300px;
 }
 
+/* =========================
+   TÍTULO
+   ========================= */
 h1 {
   color: hwb(355 0% 40%);
   margin-bottom: 20px;
 }
 
+/* =========================
+   OPÇÕES DE SENHA
+   ========================= */
 .options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
   margin-bottom: 20px;
+  width: 100%;
 }
 
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.option input[type="checkbox"] {
+  accent-color: hwb(355 0% 40%);
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: accent-color 0.2s;
+}
+
+.option label {
+  font-size: 1em;
+  color: #e0e0e0;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+body.light .option label {
+  color: #222;
+}
+
+/* =========================
+   INPUTS DE NÚMERO E SENHA
+   ========================= */
 input[type="number"], input[type="checkbox"], #password {
   margin: 5px;
 }
@@ -110,6 +163,9 @@ body.light #password {
   border: 2px solid hwb(355 0% 60%);
 }
 
+/* =========================
+   BOTÕES GERAIS
+   ========================= */
 button {
   padding: 10px 20px;
   background-color: hwb(355 0% 40%);
@@ -117,12 +173,20 @@ button {
   color: #121212;
   cursor: pointer;
   margin: 5px;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 1px 4px #0002;
 }
 
 button:hover {
   background-color: hwb(355 0% 20%);
+  transform: scale(1.05);
 }
 
+/* =========================
+   FOOTER
+   ========================= */
 footer {
   width: 100%;
   background: #222;
@@ -150,38 +214,113 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  margin-bottom: 20px;
+/* =========================
+   BANCO DE SENHAS
+   ========================= */
+.banco-container {
+  margin-top: 28px;
+  background: #18181b;
+  border-radius: 12px;
+  padding: 18px 14px 14px 14px;
+  box-shadow: 0 2px 16px #0004;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.option {
+.banco-container h2 {
+  color: hwb(355 0% 40%);
+  font-size: 1.1em;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+#banco-senhas {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  font-size: 1em;
+}
+
+#banco-senhas li {
+  background: linear-gradient(90deg, #232323 80%, #ff00331a 100%);
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 10px;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px #0002;
 }
 
-.option input[type="checkbox"] {
-  accent-color: hwb(355 0% 40%);
-  width: 18px;
-  height: 18px;
+#banco-senhas li span {
+  flex: 1;
+  color: #fff;
+  font-size: 0.98em;
+  word-break: break-all;
+}
+
+/* Botões do banco de senhas */
+.banco-btn {
+  background: hwb(355 0% 40%);
+  color: #fff;
+  border: none;
   border-radius: 4px;
-  cursor: pointer;
-  transition: accent-color 0.2s;
-}
-
-.option label {
+  padding: 4px 10px;
   font-size: 1em;
-  color: #e0e0e0;
   cursor: pointer;
-  user-select: none;
-  transition: color 0.2s;
+  margin-left: 4px;
+  transition: background 0.2s, transform 0.2s;
+}
+.banco-btn:hover {
+  background: hwb(355 0% 20%);
+  transform: scale(1.12);
 }
 
+/* Botão limpar histórico */
+.limpar-btn {
+  background: #ff0033;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px #0002;
+}
+.limpar-btn:hover {
+  background: #b80024;
+}
+
+/* =========================
+   TEMA CLARO
+   ========================= */
+body.light {
+  background: #f5f5f5;
+  color: #222;
+}
+body.light .container,
+body.light .banco-container {
+  background: #fff;
+}
+body.light #password-name,
+body.light #password,
+body.light input[type="number"] {
+  background: #fff;
+  color: #222;
+  border: 2px solid hwb(355 0% 60%);
+}
+body.light #banco-senhas li {
+  background: linear-gradient(90deg, #fff 80%, #ff00331a 100%);
+  color: #222;
+}
+body.light #banco-senhas li span {
+  color: #222;
+}
 body.light .option label {
   color: #222;
 }
