@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kirosh: Login</title>
+  <link rel="stylesheet" href="homestyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
+  <script src="home.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="https://github.com/ChN44" target="_blank" aria-label="GitHub do desenvolvedor">
+      <img src="imagens/tipografia white and red.png" alt="Logo Kiroshi" class="logo">
+    </a>
+  </nav>
+
+  <div class="container">
+    <div class="logo-login">
+      <img src="imagens/logo vermelha sem fundo .png" alt="Logo Kiroshi" />
+      <div class="subtitle">Anshō Bangō</div>
+    </div>
+
+    <p class="descricao">
+      Gerencie e gere senhas seguras de forma prática.<br>
+      Faça login para acessar seu cofre digital.
+    </p>
+
+    <form id="login-form" autocomplete="off">
+      <div class="input-group">
+        <input
+          type="text"
+          id="usuario"
+          placeholder="Usuário"
+          required
+          autofocus
+          autocomplete="username"
+          aria-label="Usuário"
+        >
+      </div>
+      <div class="input-group senha-group">
+        <input
+          type="password"
+          id="senha"
+          placeholder="Senha"
+          required
+          autocomplete="current-password"
+          aria-label="Senha"
+        >
+        <span
+          id="toggleSenha"
+          class="toggle-senha"
+          title="Mostrar/ocultar senha"
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+        >Mostrar</span>
+      </div>
+      <button type="submit">Entrar</button>
+      <button type="button" id="abrir-registro" class="btn-registro">Registrar-se</button>
+    </form>
+
+    <!-- Modal de registro -->
+    <div id="registro-modal" class="modal-registro">
+      <div class="modal-conteudo">
+        <button id="fechar-registro" class="fechar-modal" title="Fechar registro">&times;</button>
+        <h2>Criar nova conta</h2>
+        <form id="registro-form" autocomplete="off">
+          <input type="text" id="novo-usuario" placeholder="Novo usuário" required>
+          <input type="password" id="nova-senha" placeholder="Nova senha" required>
+          <button type="submit" class="btn-modal">Registrar</button>
+        </form>
+        <p id="registro-erro" class="erro-modal"></p>
+        <p id="registro-sucesso" class="sucesso-modal">Conta criada com sucesso!</p>
+      </div>
+    </div>
+    <!-- Fim do modal de registro -->
+
+    <p id="login-erro" class="erro-login" style="display:none;">Usuário ou senha incorretos.</p>
+
+    <div class="dica-login">
+      <small>Dica: se for seu primeiro acesso, registre-se e passe a usar seu gerador.</small>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Anshō Bangō desenvolvida por
+      <a href="https://github.com/ChN44" target="_blank">ChN44</a>
+    </p>
+  </footer>
+</body>
+</html>

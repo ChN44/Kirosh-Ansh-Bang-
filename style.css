@@ -18,7 +18,7 @@ body {
    ========================= */
 .navbar {
   width: 100%;
-  background: #222;
+  background: #18181b;
   padding: 0;
   display: flex;
   align-items: center;
@@ -77,12 +77,14 @@ body.light #password-name {
    ========================= */
 .container { 
   text-align: center;
-  background-color: #1e1e1e;
+  background-color: #18181b;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0004;
+  width: 320px;
+  color: #e0e0e0;
 }
+
 
 /* =========================
    TÍTULO
@@ -138,6 +140,22 @@ input[type="number"], input[type="checkbox"], #password {
   margin: 5px;
 }
 
+input[type="number"] {
+  background: #18181b;
+  color: #fff;
+  border: 2px solid hwb(355 0% 40%);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus {
+  border-color: #ff0033;
+  box-shadow: 0 0 0 2px #ff003355;
+}
+
 #password {
   width: 100%;
   padding: 12px;
@@ -170,7 +188,7 @@ button {
   padding: 10px 20px;
   background-color: hwb(355 0% 40%);
   border: none;
-  color: #121212;
+  color: #fff;
   cursor: pointer;
   margin: 5px;
   border-radius: 6px;
@@ -189,7 +207,7 @@ button:hover {
    ========================= */
 footer {
   width: 100%;
-  background: #222;
+  background: #18181b;
   color: #e0e0e0;
   text-align: center;
   padding: 16px 0 8px 0;
@@ -218,14 +236,13 @@ footer a:hover {
    BANCO DE SENHAS
    ========================= */
 .banco-container {
-  margin-top: 28px;
+  margin-top: 0;
   background: #18181b;
   border-radius: 12px;
   padding: 18px 14px 14px 14px;
   box-shadow: 0 2px 16px #0004;
   max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
+  color: #e0e0e0;
 }
 
 .banco-container h2 {
@@ -323,4 +340,28 @@ body.light #banco-senhas li span {
 }
 body.light .option label {
   color: #222;
+}
+
+/* =========================
+   LAYOUT LADO A LADO
+   ========================= */
+.main-content {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 40px 0 80px 0; /* espaço para o footer */
+}
+
+/* Responsivo: empilha no mobile */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .container, .banco-container {
+    max-width: 95vw;
+    width: 100%;
+  }
 }
