@@ -59,24 +59,8 @@
         >Mostrar</span>
       </div>
       <button type="submit">Entrar</button>
-      <button type="button" id="abrir-registro" class="btn-registro">Registrar-se</button>
+      <button type="button" id="abrir-registro" class="btn-registro" onclick="window.location.href='registro.html'">Registrar-se</button>
     </form>
-
-    <!-- Modal de registro -->
-    <div id="registro-modal" class="modal-registro">
-      <div class="modal-conteudo">
-        <button id="fechar-registro" class="fechar-modal" title="Fechar registro">&times;</button>
-        <h2>Criar nova conta</h2>
-        <form id="registro-form" autocomplete="off">
-          <input type="text" id="novo-usuario" placeholder="Novo usuário" required>
-          <input type="password" id="nova-senha" placeholder="Nova senha" required>
-          <button type="submit" class="btn-modal">Registrar</button>
-        </form>
-        <p id="registro-erro" class="erro-modal"></p>
-        <p id="registro-sucesso" class="sucesso-modal">Conta criada com sucesso!</p>
-      </div>
-    </div>
-    <!-- Fim do modal de registro -->
 
     <p id="login-erro" class="erro-login" style="display:none;">Usuário ou senha incorretos.</p>
 

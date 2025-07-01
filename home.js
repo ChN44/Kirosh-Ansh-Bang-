@@ -1,9 +1,13 @@
-// Utilitário para selecionar elementos por id
+// ===============================
+// Utilitário para seleção de elementos
+// ===============================
 function $(id) {
   return document.getElementById(id);
 }
 
-// Mostrar/ocultar senha do login
+// ===============================
+// Mostrar/Ocultar senha do login
+// ===============================
 (function () {
   const senhaInput = $('senha');
   const toggleSenha = $('toggleSenha');
@@ -28,7 +32,11 @@ function $(id) {
   }
 })();
 
-// Função para obter usuários do localStorage
+// ===============================
+// Funções para manipular usuários no localStorage
+// ===============================
+
+// Retorna objeto de usuários cadastrados
 function getUsuarios() {
   try {
     return JSON.parse(localStorage.getItem('usuarios')) || {};
@@ -37,26 +45,14 @@ function getUsuarios() {
   }
 }
 
-// Função para salvar usuários no localStorage
+// Salva objeto de usuários no localStorage
 function setUsuarios(users) {
   localStorage.setItem('usuarios', JSON.stringify(users));
 }
 
-// Função para obter dados de cada usuário
-function getDadosUsuarios() {
-  try {
-    return JSON.parse(localStorage.getItem('dadosUsuarios')) || {};
-  } catch {
-    return {};
-  }
-}
-
-// Função para salvar dados de cada usuário
-function setDadosUsuarios(dados) {
-  localStorage.setItem('dadosUsuarios', JSON.stringify(dados));
-}
-
-// Validação de login (admin/1234 ou localStorage)
+// ===============================
+// Login: Validação e redirecionamento
+// ===============================
 $('login-form')?.addEventListener('submit', function (e) {
   e.preventDefault();
   const usuario = $('usuario').value.trim();
@@ -76,92 +72,5 @@ $('login-form')?.addEventListener('submit', function (e) {
     erro.textContent = 'Usuário ou senha incorretos.';
     $('senha').value = '';
     $('senha').focus();
-  }
-});
-
-// Abrir modal de registro
-$('abrir-registro')?.addEventListener('click', function () {
-  $('registro-modal').classList.add('ativo');
-  $('registro-erro').style.display = 'none';
-  $('registro-sucesso').style.display = 'none';
-  $('novo-usuario').value = '';
-  $('nova-senha').value = '';
-  setTimeout(() => $('novo-usuario').focus(), 100);
-});
-
-// Fechar modal de registro
-$('fechar-registro')?.addEventListener('click', function () {
-  $('registro-modal').classList.remove('ativo');
-});
-
-// Registro de novo usuário (localStorage)
-$('registro-form')?.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const user = $('novo-usuario').value.trim();
-  const pass = $('nova-senha').value;
-  const erro = $('registro-erro');
-  const sucesso = $('registro-sucesso');
-
-  if (!user || !pass) {
-    erro.textContent = 'Preencha todos os campos.';
-    erro.style.display = 'block';
-    sucesso.style.display = 'none';
-    return;
-  }
-  if (user.length < 3 || pass.length < 3) {
-    erro.textContent = 'Usuário e senha devem ter pelo menos 3 caracteres.';
-    erro.style.display = 'block';
-    sucesso.style.display = 'none';
-    return;
-  }
-  if (/[^a-zA-Z0-9_]/.test(user)) {
-    erro.textContent = 'Usuário só pode conter letras, números e _.';
-    erro.style.display = 'block';
-    sucesso.style.display = 'none';
-    return;
-  }
-  let users = getUsuarios();
-  if (users[user] || user === 'admin') {
-    erro.textContent = 'Usuário já existe.';
-    erro.style.display = 'block';
-    sucesso.style.display = 'none';
-    return;
-  }
-  users[user] = pass;
-  setUsuarios(users);
-
-  // Cria dados vazios para o novo usuário
-  let dadosUsuarios = getDadosUsuarios();
-  dadosUsuarios[user] = [];
-  setDadosUsuarios(dadosUsuarios);
-
-  erro.style.display = 'none';
-  sucesso.style.display = 'block';
-  setTimeout(() => {
-    $('registro-modal').classList.remove('ativo');
-  }, 1200);
-});
-
-// Fechar modal ao clicar fora do conteúdo
-$('registro-modal')?.addEventListener('click', function(e) {
-  if (e.target === this) {
-    this.classList.remove('ativo');
-  }
-});
-
-// Fechar modal ao pressionar ESC (só se estiver aberto)
-document.addEventListener('keydown', function(e) {
-  if (
-    e.key === 'Escape' &&
-    $('registro-modal')?.classList.contains('ativo')
-  ) {
-    $('registro-modal').classList.remove('ativo');
-  }
-});
-
-// Acessibilidade: foca no botão fechar ao abrir o modal pelo teclado
-$('abrir-registro')?.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' || e.key === ' ') {
-    setTimeout(() => $('fechar-registro').focus(), 200);
   }
 });
